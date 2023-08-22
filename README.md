@@ -2,14 +2,11 @@
 This is a simple note-taking app built with Flutter. It allows users to create, edit, and delete notes.
 
 ### Table of contents
-- [System requirements](#system-requirements)
-- [Figma design guidelines for better UI accuracy](#figma-design-guideline-for-better-accuracy)
-- [Check the UI of the entire app](#app-navigations)
-- [Application structure](#project-structure)
-- [How to format the code?](#how-you-can-do-code-formatting)
-- [How you can improve code readability?](#how-you-can-improve-the-readability-of-code)
+- [Features](#features)
+- [Screenshots](#screenshots)
+- [Application structure](#application-structure)
 - [Libraries and tools used](#libraries-and-tools-used)
-- [Support](#support)
+- [Contributing](#contributing)
 
 
 ## Features
@@ -22,17 +19,18 @@ This is a simple note-taking app built with Flutter. It allows users to create, 
 
 ## Screenshots
 
+<img src="/readme/1.png" width="200"/>
 
-### Application structure
+## Application structure
 
-After successful build, the application structure should look like this:
+Used Clean Architecture with MVVM design pattern.
 
 ```
 .
 ├── android                         - Files required to run the application on an Android platform.
 ├── assets                          - All images and fonts of the application.
 ├── ios                             - Files required to run the application on an iOS platform.
-└── lib                             - Most important folder in the application, used to write most of the Dart code..
+└── lib
     ├── main.dart                   - Starting point of the application
     ├── core
     │   ├── app_export.dart         - Commonly used file imports
@@ -55,7 +53,7 @@ After successful build, the application structure should look like this:
     └── theme                       - Theme and decoration classes
 ```
 
-### Libraries and tools used
+## Libraries and tools used
 
 - Provider - State management
   https://pub.dev/packages/provider
@@ -71,3 +69,12 @@ After successful build, the application structure should look like this:
 2. Open the project in Visual Studio Code
 3. Run `flutter pub get` to install dependencies
 4. Run the app using `flutter run`
+
+## Contributing
+If you'd like to contribute to the project, feel free to submit a pull request with your changes. Please make sure to follow the existing code style and include tests for any new features or bug fixes.
+
+If you like my work, support me by giving a ⭐️ for this repository
+
+## License
+This project is licensed under the GNU General Public License v3.0 License - see the LICENSE file for details.
+
