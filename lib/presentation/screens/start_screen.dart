@@ -7,19 +7,14 @@ class StartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(statusBarColor: Colors.white),
+      SystemUiOverlayStyle(
+        statusBarColor: (isDarkMode ? Colors.black : Colors.white),
+      ),
     );
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
-      // appBar: AppBar(
-      //   systemOverlayStyle: const SystemUiOverlayStyle(
-      //     statusBarColor: Colors.white,
-      //     statusBarIconBrightness: Brightness.dark, // For Android (dark icons)
-      //     statusBarBrightness: Brightness.light, // For iOS (dark icons)
-      //   ),
-      //   backgroundColor: Colors.transparent,
-      // ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -31,7 +26,7 @@ class StartScreen extends StatelessWidget {
                 children: <Widget>[
                   const SizedBox(height: 80),
                   Image.asset(
-                    'assets/images/productivity.jpg',
+                    'assets/images/productivity-light.png',
                   ),
                   const SizedBox(height: 20),
                 ],
@@ -41,7 +36,7 @@ class StartScreen extends StatelessWidget {
                   Text(
                     'Capture & Organize\n Ideas with Ease',
                     style: TextStyle(
-                      fontSize: 28,
+                      fontSize: 26,
                       fontWeight: FontWeight.bold,
                       fontFamily: 'Roboto',
                     ),
@@ -53,7 +48,7 @@ class StartScreen extends StatelessWidget {
                     child: Text(
                       "Jot down brilliant ideas, keeping track of daily tasks, or preserving important thoughts",
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 15,
                         color: Color.fromARGB(255, 133, 133, 133),
                       ),
                       textAlign: TextAlign.center,

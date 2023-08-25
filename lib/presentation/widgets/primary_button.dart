@@ -22,13 +22,13 @@ class PrimaryButton extends StatelessWidget {
         width: double.infinity,
         alignment: Alignment.center,
         padding: const EdgeInsets.symmetric(
-          vertical: 18,
+          vertical: 16,
           horizontal: 20,
         ),
         child: Text(
           buttonText,
           style: const TextStyle(
-            fontSize: 18,
+            fontSize: 16,
             color: Colors.white,
           ),
         ),

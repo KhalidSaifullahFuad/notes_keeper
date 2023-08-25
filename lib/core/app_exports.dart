@@ -1,3 +1,6 @@
+// Themes
+export '../theme/app_theme.dart';
+
 // Router
 export '../routes/app_routes.dart';
 
