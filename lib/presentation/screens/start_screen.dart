@@ -58,11 +58,11 @@ class StartScreen extends StatelessWidget {
                 ],
               ),
               Container(
-                padding: const EdgeInsets.symmetric(vertical: 30),
+                padding: const EdgeInsets.symmetric(vertical: 20),
                 child: PrimaryButton(
-                  'GET STARTED',
-                  () {
-                    Navigator.of(context).pushNamed('/get_started');
+                  buttonText: 'GET STARTED',
+                  onPressed: () {
+                    Navigator.of(context).pushNamed('/login');
                   },
                 ),
               ),
