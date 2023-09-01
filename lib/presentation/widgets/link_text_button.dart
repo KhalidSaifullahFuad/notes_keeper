@@ -5,11 +5,12 @@ class LinkTextButton extends StatelessWidget {
   final double fontSize;
   final void Function()? onPressed;
 
-  const LinkTextButton(
-      {super.key,
-      required this.text,
-      this.fontSize = 15.0,
-      required this.onPressed});
+  const LinkTextButton({
+    super.key,
+    required this.text,
+    required this.onPressed,
+    this.fontSize = 15.0,
+  });
 
   @override
   Widget build(BuildContext context) {

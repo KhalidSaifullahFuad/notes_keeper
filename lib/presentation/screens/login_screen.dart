@@ -27,7 +27,6 @@ class _LoginScreenState extends State<LoginScreen> {
       _clearErrors();
       return 'Please enter your email';
     }
-
     return null;
   }
 
@@ -62,11 +61,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      const SizedBox(height: 20),
                       Image.asset(
                         'assets/images/login.png',
-                        width: 200,
-                        height: 250,
+                        width: 210,
                       ),
+                      const SizedBox(height: 25),
                       Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
@@ -100,7 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         errorText: _passwordError,
                         onChanged: (_) => _clearErrors(),
                       ),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 12),
                       Align(
                         alignment: Alignment.centerRight,
                         child: LinkTextButton(
@@ -109,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           onPressed: () {},
                         ),
                       ),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 12),
                       PrimaryButton(
                         buttonText: "Log In",
                         onPressed: () {
@@ -120,7 +120,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         padding: const EdgeInsets.symmetric(vertical: 25.0),
                         child: Row(
                           children: [
-                            Expanded(child: Divider(color: secondaryColor)),
+                            Expanded(
+                              child: Divider(
+                                color: secondaryColor,
+                                thickness: 1,
+                              ),
+                            ),
                             Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 15.0),
@@ -133,7 +138,10 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
                             Expanded(
-                              child: Divider(color: secondaryColor),
+                              child: Divider(
+                                color: secondaryColor,
+                                thickness: 1,
+                              ),
                             ),
                           ],
                         ),
@@ -157,11 +165,12 @@ class _LoginScreenState extends State<LoginScreen> {
                           const SizedBox(width: 5),
                           LinkTextButton(
                             text: "Sign Up",
-                            onPressed: () {},
-                          )
+                            onPressed: () =>
+                                Navigator.of(context).pushNamed('/signup'),
+                          ),
+                          const SizedBox(height: 20),
                         ],
                       ),
-                      const SizedBox(height: 20),
                     ],
                   ),
                 ),
@@ -184,13 +193,7 @@ class _LoginScreenState extends State<LoginScreen> {
     // bool isUserLoggedIn = await _userViewModel.loginUser(email, password);
 
     // if (isUserLoggedIn) {
-    //   Navigator.of(context).pushReplacement(
-    //     MaterialPageRoute(
-    //       builder: (context) {
-    //         return NotesScreen();
-    //       },
-    //     ),
-    //   );
+    // Navigator.of(context).pushNamed('/signup');
     // } else {
     //   _showSnackBar('Invalid email or password', color: Colors.red);
     // }

@@ -25,14 +25,16 @@ class TextInputField extends StatefulWidget {
   });
 
   @override
-  _TextInputFieldState createState() => _TextInputFieldState();
+  TextInputFieldState createState() => TextInputFieldState();
 }
 
-class _TextInputFieldState extends State<TextInputField> {
+class TextInputFieldState extends State<TextInputField> {
   bool _isObscure = true;
 
   @override
   Widget build(BuildContext context) {
+    final ColorScheme colorScheme = Theme.of(context).colorScheme;
+
     return TextFormField(
       controller: widget.controller,
       validator: widget.validator,
@@ -46,12 +48,16 @@ class _TextInputFieldState extends State<TextInputField> {
       ),
       keyboardType: widget.keyboardType,
       obscureText: _isObscure && widget.isPassword,
-      cursorColor: Theme.of(context).colorScheme.primary,
+      cursorColor: colorScheme.primary,
       decoration: InputDecoration(
+        contentPadding: const EdgeInsets.symmetric(
+          vertical: 16.0,
+          horizontal: 20.0,
+        ),
         prefixIconConstraints: const BoxConstraints(minWidth: 50),
         prefixIcon: Icon(
           widget.prefixIcon,
-          color: Theme.of(context).colorScheme.primary,
+          color: colorScheme.primary,
           size: 20.0,
         ),
         suffixIconConstraints: const BoxConstraints(minWidth: 50),
@@ -66,23 +72,22 @@ class _TextInputFieldState extends State<TextInputField> {
                   _isObscure
                       ? Icons.visibility_outlined
                       : Icons.visibility_off_outlined,
-                  color: Theme.of(context).colorScheme.primary,
+                  color: colorScheme.primary,
                   size: 20.0,
                 ),
                 splashRadius: 30.0,
               )
             : null,
-        // labelText: widget.hintText,
         hintText: widget.hintText,
         errorText: widget.errorText,
         errorStyle: TextStyle(
-          color: Theme.of(context).colorScheme.error,
+          color: colorScheme.error,
           fontWeight: FontWeight.w500,
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.0),
           borderSide: BorderSide(
-            color: Theme.of(context).colorScheme.primary,
+            color: colorScheme.primary,
             width: 1.0,
           ),
         ),
@@ -96,20 +101,20 @@ class _TextInputFieldState extends State<TextInputField> {
         errorBorder: OutlineInputBorder(
           borderSide: BorderSide(
             width: 1.0,
-            color: Theme.of(context).colorScheme.error,
+            color: colorScheme.error,
           ),
           borderRadius: BorderRadius.circular(12.0),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderSide: BorderSide(
             width: 1.0,
-            color: Theme.of(context).colorScheme.error,
+            color: colorScheme.error,
           ),
           borderRadius: BorderRadius.circular(12.0),
         ),
         filled: true,
-        fillColor: Theme.of(context).colorScheme.surface,
-        hoverColor: Theme.of(context).colorScheme.surface,
+        fillColor: colorScheme.surface,
+        hoverColor: colorScheme.surface,
       ),
     );
   }
