@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:notes_keeper/core/app_exports.dart';
+import 'package:notes_keeper/utils/app_exports.dart';
 
 class StartScreen extends StatelessWidget {
   const StartScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(

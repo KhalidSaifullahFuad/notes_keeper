@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:notes_keeper/core/app_exports.dart';
+import 'package:notes_keeper/utils/app_exports.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);

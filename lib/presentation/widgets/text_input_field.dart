@@ -79,7 +79,7 @@ class TextInputFieldState extends State<TextInputField> {
               )
             : null,
         hintText: widget.hintText,
-        errorText: widget.errorText,
+        errorText: widget.errorText != '' ? widget.errorText : null,
         errorStyle: TextStyle(
           color: colorScheme.error,
           fontWeight: FontWeight.w500,

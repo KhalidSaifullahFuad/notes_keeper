@@ -11,7 +11,7 @@ This is a simple note-taking app built with Flutter. It allows users to create, 
 
 ## Features
 
-- Create account 
+- Create account
 - Create new notes
 - Edit existing notes
 - Delete notes
@@ -31,26 +31,23 @@ Used Clean Architecture with MVVM design pattern.
 ├── assets                          - All images and fonts of the application.
 ├── ios                             - Files required to run the application on an iOS platform.
 └── lib
-    ├── main.dart                   - Starting point of the application
     ├── core
-    │   ├── app_export.dart         - Commonly used file imports
-    │   ├── constants               - Static constant class file
-    │   └── utils                   - Common files and utilities of the application
-    ├── data                        - Data of the application
-    │   ├── database                - Database of the application
-    │   └── network                 - API calls of the application
-    ├── domain                      - Domain logic of the application
-    │   ├── models                  - Models of the application
-    │   ├── repositories            - Repositories of the application
-    │   └── usecases                - Usecases of the application
+    |   ├── models                  - Models of the application
+    │   ├── providers               - Providers of the application
+    │   ├── services                - Services of the application
+    │   └── constants               - Static constant class file
     ├── presentation                - Presentation layer of the application
     │   ├── screens                 - Screens of the application
-    │   ├── shared                  - Shared widgets of the application
-    |   ├── viewmodels              - Viewmodels of the application
-    │   └── widgets                 - Widgets of the application
-    ├── routes                      - Routes of the application
+    │   ├── shared                  - Shared screens and widgets of the application
+    |   |   |-- screens
+    |   |   └── widgets
+    |   └── viewmodels              - Viewmodels of the application
+    |── utils                       - Common files and utilities of the application
+    │   ├── app_export.dart
+    │   └── app_routes.dart
+    ├── theme                       - Theme and decoration classes
     ├── test                        - Test files of the application
-    └── theme                       - Theme and decoration classes
+    └── main.dart                   - Starting point of the application
 ```
 
 ## Libraries and tools used
