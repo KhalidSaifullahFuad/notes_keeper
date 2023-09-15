@@ -1,0 +1,38 @@
+import 'package:flutter/material.dart';
+
+class PrimaryButton extends StatelessWidget {
+  final String buttonText;
+  final VoidCallback onPressed;
+
+  const PrimaryButton(this.buttonText, this.onPressed, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12.0),
+          side: BorderSide.none,
+        ),
+        elevation: 0,
+      ),
+      onPressed: onPressed,
+      child: Container(
+        width: double.infinity,
+        alignment: Alignment.center,
+        padding: const EdgeInsets.symmetric(
+          vertical: 18,
+          horizontal: 20,
+        ),
+        child: Text(
+          buttonText,
+          style: const TextStyle(
+            fontSize: 18,
+            color: Colors.white,
+          ),
+        ),
+      ),
+    );
+  }
+}
