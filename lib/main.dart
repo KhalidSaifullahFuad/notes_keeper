@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:device_preview/device_preview.dart';
 
-import 'package:notes_keeper/core/app_exports.dart';
+import 'package:notes_keeper/core/app_export.dart';
 
 void main() {
   runApp(kIsWeb
@@ -21,11 +21,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Note App',
       theme: ThemeData(
-        fontFamily: 'Roboto',
         brightness: Brightness.light,
         colorScheme: ColorScheme.light(
           background: Colors.white,
-          primary: const Color(0xFF3534C2),
+          primary: const Color(0xFF1565C0),
           secondary: Colors.grey.shade300,
           onPrimary: Colors.white,
           onSecondary: Colors.black,
@@ -44,8 +43,6 @@ class MyApp extends StatelessWidget {
       // ),
       home: const StartScreen(),
       debugShowCheckedModeBanner: false,
-      initialRoute: '/get_started',
-      routes: routes,
     );
   }
 }
