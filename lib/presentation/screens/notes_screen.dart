@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:notes_keeper/core/models/note_model.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import 'package:notes_keeper/utils/app_exports.dart';
@@ -16,45 +18,52 @@ class _NotesScreenState extends State<NotesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final ColorScheme colorScheme = Theme.of(context).colorScheme;
-    return Scaffold(
-      backgroundColor: colorScheme.background,
-      appBar: _buildAppBar(),
-      floatingActionButton: _buildFAB(),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              const SizedBox(height: 4),
-              _buildSearchBar(),
-              const SizedBox(height: 10),
-              CategoryList(
-                categories: const [
-                  'All',
-                  'Personal',
-                  'Work',
-                  'Ideas',
-                  'Home',
-                  'Lists',
-                  'Important',
-                  'Others',
-                  'Archive'
-                ],
-                onCategorySelected: (category) {
-                  print("Clicked on $category");
-                },
-              ),
-              const SizedBox(height: 8),
-              Expanded(
-                child: _isListLayout ? _buildNoteList() : _buildNoteGrid(),
-              ),
-            ],
+    final NotesViewModel notesViewModel = Provider.of<NotesViewModel>(context);
+    final colorScheme = Theme.of(context).colorScheme;
+
+    return Consumer(builder: (context, notesViewModel, child) {
+
+      // List<Note> notes = notesViewModel.notes;
+
+      return Scaffold(
+        backgroundColor: colorScheme.background,
+        appBar: _buildAppBar(),
+        floatingActionButton: _buildFAB(),
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                const SizedBox(height: 4),
+                _buildSearchBar(),
+                const SizedBox(height: 10),
+                CategoryList(
+                  categories: const [
+                    'All',
+                    'Personal',
+                    'Work',
+                    'Ideas',
+                    'Home',
+                    'Lists',
+                    'Important',
+                    'Others',
+                    'Archive'
+                  ],
+                  onCategorySelected: (category) {
+                    print("Clicked on $category");
+                  },
+                ),
+                const SizedBox(height: 8),
+                Expanded(
+                  child: _isListLayout ? _buildNoteList() : _buildNoteGrid(),
+                ),
+              ],
+            ),
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 
   Widget _buildSearchBar() {
@@ -351,4 +360,6 @@ class _NotesScreenState extends State<NotesScreen> {
       physics: const BouncingScrollPhysics(),
     );
   }
+
+  _buildNotesList(ColorScheme colorScheme) {}
 }

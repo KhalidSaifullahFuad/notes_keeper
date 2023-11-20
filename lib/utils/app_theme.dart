@@ -27,6 +27,8 @@ ThemeData darkTheme = ThemeData(
     secondary: Colors.grey.shade800,
     onPrimary: Colors.white,
     onSecondary: Colors.grey.shade50,
+    onBackground: Colors.white,
+    onSurfaceVariant: const Color.fromARGB(255, 104, 104, 104),
     error: const Color(0xFFD32F2F),
   ),
 );

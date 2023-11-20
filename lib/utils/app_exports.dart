@@ -4,8 +4,23 @@ export '../utils/app_theme.dart';
 // Router
 export 'app_routes.dart';
 
+// Models
+export '../core/models/user_model.dart';
+export '../core/models/note_model.dart';
+
+// Providers
+export '../presentation/viewmodels/signup_viewmodel.dart';
+export '../presentation/viewmodels/notes_viewmodel.dart';
+
 // Validators
 export '../presentation/validators/form_validators.dart';
+
+// Repositories
+export '../core/repositories/authentication_repository.dart';
+export '../core/repositories/user_repository.dart';
+
+// Custom Exceptions
+export '../utils/custom_exception.dart';
 
 // Widgets
 export '../presentation/widgets/primary_button.dart';
