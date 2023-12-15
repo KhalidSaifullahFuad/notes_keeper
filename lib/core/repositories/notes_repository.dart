@@ -19,7 +19,11 @@ class NotesRepository {
 
   Future<void> updateNote(Note note) async {
     try {
-      await _notesCollection.doc(note.id).update(note.toMap());
+      if (note.id != null) {
+        await _notesCollection.doc(note.id).update(note.toMap());
+      } else {
+        await _notesCollection.add(note.toMap());
+      }
     } on FirebaseException catch (e) {
       logger.e('Firebase Error: ${e.code}');
     } catch (e) {
@@ -40,12 +44,33 @@ class NotesRepository {
   Future<List<Note>> getAllNotes() async {
     try {
       QuerySnapshot querySnapshot = await _notesCollection.get();
-      return querySnapshot.docs.map((doc) => Note.fromSnapshot(doc)).toList();
+      List<Note> allNotes =
+          querySnapshot.docs.map((doc) => Note.fromSnapshot(doc)).toList();
+      allNotes.sort((a, b) => b.updatedDate.compareTo(a.updatedDate));
+
+      return allNotes;
     } on FirebaseException catch (e) {
       logger.e('Firebase Error: ${e.code}');
       return [];
     } catch (e) {
       logger.e('Error getting all notes: $e');
+      return [];
+    }
+  }
+
+  Future<List<Note>> getAllNotesByUserId(String userId) async {
+    try {
+      QuerySnapshot querySnapshot =
+          await _notesCollection.where('userId', isEqualTo: userId).get();
+      List<Note> allNotes =
+          querySnapshot.docs.map((doc) => Note.fromSnapshot(doc)).toList();
+      allNotes.sort((a, b) => b.updatedDate.compareTo(a.updatedDate));
+      return allNotes;
+    } on FirebaseException catch (e) {
+      logger.e('Firebase Error: ${e.code}');
+      return [];
+    } catch (e) {
+      logger.e('Error getting all notes by user id: $e');
       return [];
     }
   }
@@ -61,6 +86,20 @@ class NotesRepository {
     } catch (e) {
       logger.e('Error getting note by id: $e');
       return null;
+    }
+  }
+
+  Future<List<Note>> filterNotesByTag(String tag) async {
+    try {
+      QuerySnapshot querySnapshot =
+          await _notesCollection.where('tags', arrayContains: tag).get();
+      return querySnapshot.docs.map((doc) => Note.fromSnapshot(doc)).toList();
+    } on FirebaseException catch (e) {
+      logger.e('Firebase Error: ${e.code}');
+      return [];
+    } catch (e) {
+      logger.e('Error filtering notes by tag: $e');
+      return [];
     }
   }
 }

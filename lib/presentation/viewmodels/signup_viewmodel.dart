@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:notes_keeper/utils/app_exports.dart';
 
 class SignUpViewModel with ChangeNotifier {
-  final AuthenticationRepository _authenticationRepository;
-
-  SignUpViewModel(this._authenticationRepository);
+  final AuthenticationRepository _authenticationRepository = AuthenticationRepository();
 
   final nameController = TextEditingController();
   final emailController = TextEditingController();
@@ -88,5 +86,9 @@ class SignUpViewModel with ChangeNotifier {
       toggleLoading();
     }
     return false;
+  }
+
+  Future<void> logout() async {
+    await _authenticationRepository.logout();
   }
 }

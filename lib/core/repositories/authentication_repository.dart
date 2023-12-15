@@ -9,6 +9,18 @@ class AuthenticationRepository {
 
   final logger = Logger();
 
+  Stream<UserModel> get user => _auth.authStateChanges().map((user) {
+        if (user == null) {
+          return UserModel.empty;
+        } else {
+          return UserModel(
+            id: user.uid,
+            name: user.displayName ?? "",
+            email: user.email ?? "",
+          );
+        }
+      });
+
   Future<User?> signUpWithEmailAndPassword({
     required String email,
     required String password,

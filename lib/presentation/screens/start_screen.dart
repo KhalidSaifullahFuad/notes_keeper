@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notes_keeper/utils/app_exports.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class StartScreen extends StatelessWidget {
   const StartScreen({Key? key}) : super(key: key);
@@ -54,7 +55,11 @@ class StartScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 20),
                 child: PrimaryButton(
                   buttonText: 'GET STARTED',
-                  onPressed: () {
+                  onPressed: () async {
+                    SharedPreferences prefs =
+                        await SharedPreferences.getInstance();
+                    prefs.setBool('onboarding_complete', true);
+
                     Navigator.of(context).pushNamed('/login');
                   },
                 ),

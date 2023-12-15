@@ -18,6 +18,7 @@ export '../presentation/validators/form_validators.dart';
 // Repositories
 export '../core/repositories/authentication_repository.dart';
 export '../core/repositories/user_repository.dart';
+export '../core/repositories/notes_repository.dart';
 
 // Custom Exceptions
 export '../utils/custom_exception.dart';

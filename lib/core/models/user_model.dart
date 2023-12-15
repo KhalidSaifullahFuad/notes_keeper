@@ -4,17 +4,17 @@ class UserModel {
   String id;
   String name;
   String email;
-  String password;
+  String? password;
   DateTime? createdDate;
-  DateTime updatedDate;
+  DateTime? updatedDate;
 
   UserModel({
     required this.id,
     required this.name,
     required this.email,
-    required this.password,
+    this.password,
     this.createdDate,
-    required this.updatedDate,
+    this.updatedDate,
   });
 
   factory UserModel.fromSnapshot(DocumentSnapshot snapshot) {
@@ -26,7 +26,7 @@ class UserModel {
       email: data['email'],
       password: data['password'],
       createdDate: data['createdDate']?.toDate(),
-      updatedDate: data['updatedDate'].toDate(),
+      updatedDate: data['updatedDate']?.toDate(),
     );
   }
 
@@ -39,4 +39,16 @@ class UserModel {
       'updatedDate': FieldValue.serverTimestamp(),
     };
   }
+
+  static UserModel get empty => UserModel(
+    id: "",
+    name: "",
+    email: "",
+    password: "",
+    createdDate: DateTime.now(),
+    updatedDate: DateTime.now(),
+  );
+
+  @override
+  operator ==(user) => user is UserModel && user.id == id && user.name == name && user.email == email && user.password == password;
 }

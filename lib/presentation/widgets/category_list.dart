@@ -33,6 +33,7 @@ class _CategoryListState extends State<CategoryList> {
 
           return GestureDetector(
             onTap: () {
+              widget.onCategorySelected(category);
               setState(() {
                 selectedCategory = category;
               });

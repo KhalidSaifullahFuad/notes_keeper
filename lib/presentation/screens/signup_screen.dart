@@ -130,8 +130,8 @@ class SignupScreenState extends State<SignupScreen> {
                             const SizedBox(width: 5),
                             LinkTextButton(
                               text: "Log In",
-                              onPressed: () =>
-                                  Navigator.of(context).pushNamed('/notes'),
+                              onPressed: () => Navigator.of(context)
+                                  .popAndPushNamed('/login'),
                             )
                           ],
                         ),

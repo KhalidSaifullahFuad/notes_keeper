@@ -1,18 +1,20 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Note {
-  String id;
+  String? id;
+  String? userId;
   String title;
   String content;
-  List<String>? tags;
+  List<String> tags;
   DateTime? createdDate;
   DateTime updatedDate;
 
   Note({
-    required this.id,
+    this.id,
+    this.userId,
     required this.title,
     required this.content,
-    this.tags,
+    this.tags = const [],
     this.createdDate,
     required this.updatedDate,
   });
@@ -32,6 +34,7 @@ class Note {
 
   Map<String, dynamic> toMap() {
     return {
+      'userId': userId ?? '',
       'title': title,
       'content': content,
       'tags': tags,

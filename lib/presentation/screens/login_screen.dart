@@ -146,10 +146,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               const SizedBox(width: 5),
                               LinkTextButton(
-                                text: "Sign Up",
-                                onPressed: () =>
-                                    Navigator.of(context).pushNamed('/signup'),
-                              ),
+                                  text: "Sign Up",
+                                  onPressed: () => Navigator.of(context)
+                                      .popAndPushNamed('/signup')),
                               const SizedBox(height: 20),
                             ],
                           ),
